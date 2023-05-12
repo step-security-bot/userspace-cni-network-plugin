@@ -35,6 +35,15 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
+    - name: remove deployer container from dockerfile
+      run: sed -ie '/End of builder/,+5d' ./docker/userspacecni/Dockerfile
+    - name: Build the Docker image
+      run: docker build . -f ./docker/userspacecni/Dockerfile -t userspacecni:latest
+    - name: run container
+      run: docker run --name userspacecni -itd userspacecni:latest bash
+    - name: docker copy generated bin api files
+      run: docker cp userspacecni:/root/userspace-cni-network-plugin/cnivpp ./
+
     - name: Set up Go
       uses: actions/setup-go@v3
       with:
