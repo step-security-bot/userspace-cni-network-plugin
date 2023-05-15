@@ -28,7 +28,7 @@ jobs:
     - uses: brpaz/hadolint-action@v1.2.1
       name: Run Hadolint
       with:
-       dockerfile: Dockerfile
+       dockerfile: ./docker/userspacecni/Dockerfile
 
   go-check:
     runs-on: ubuntu-latest
