@@ -39,3 +39,13 @@ updates:
     directory: /docker/userspacecni
     schedule:
       interval: daily
+
+  - package-ecosystem: pip
+    directory: /ci/ovs_test_setup/testpmd_image
+    schedule:
+      interval: daily
+
+  - package-ecosystem: pip
+    directory: /docker/testpmd
+    schedule:
+      interval: daily
